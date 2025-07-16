@@ -1,0 +1,118 @@
+#general {
+   background-image: url(/fondoeventos.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  margin-top: -20px;
+}
+
+.eventos-container {
+  display: flex;
+  height: 71.9vh; /* Altura del contenedor */
+  width: 120%;
+}
+
+
+.eventos-section {
+  width: 100%;
+  padding: 20px;
+  margin-left: 100px;
+  margin-top: -30px;
+}
+
+
+aside, .eventos-section {
+  display: inline-block;
+  width: 50%;
+}
+
+
+
+
+
+h1 {
+  text-align: center;
+  color: black;
+font-family: monospace;
+}
+
+aside {
+  width: 15%;
+  font-size: 50px;
+  overflow-y: auto;
+  max-height: 700px; /* Altura fija */
+  padding-left: 100px;
+  padding-right: 50px;
+  border-right: 4px solid #000000;
+}
+
+aside a {
+  display: block;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+aside a:hover {
+  background-color: #555;
+}
+
+/* Ancho de la barra */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+
+/* Fondo del track (canal) */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Pulgar (la parte que se arrastra) */
+::-webkit-scrollbar-thumb {
+  background-color: #131010;
+  border-radius: 10px;
+}
+
+/* Hover del pulgar */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+#creatorForm {
+  display: none ;
+}
+
+
+
+#creator button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #7a7a7a; /* gris suave, para que no destaque mucho */
+  font-size: 0.9rem;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+#creator button:hover {
+  opacity: 0.
+}
+
+#creator p, #creator button {
+  margin-left: 50px;
+  margin-bottom: 0px;
+  display: inline-block;
+  margin-right: -40px;
+  color: #2d2a2a;           /* gris suave, poco contraste */
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  opacity: 0.6;             /* semi transparente */
+
+}
+
+ #creator button:hover {
+  opacity: 0.9;             /* un poco más visible al hover */
+  cursor: pointer;
+}

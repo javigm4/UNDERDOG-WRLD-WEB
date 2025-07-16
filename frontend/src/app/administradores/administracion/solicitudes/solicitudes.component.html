@@ -1,0 +1,73 @@
+<div class="scroll-eventos">
+  <input
+    type="text"
+    placeholder="Buscar evento..."
+    [(ngModel)]="filtroEvento"
+    class="buscador-eventos"
+  />
+  <table class="tabla-solicitudes">
+    <tbody>
+      @for (evento of eventosFiltrados; track evento.id) {
+      <!-- Cabecera del evento con toggle -->
+      <tr class="evento-header" (click)="toggleEvento(evento.id)">
+        <td colspan="5">
+          <strong>{{ evento.nombre }}</strong>
+          <span class="flecha" [class.abierto]="estaAbierto(evento.id)">⮟</span>
+        </td>
+      </tr>
+
+      <!-- Solicitudes del evento (se muestran solo si está abierto) -->
+      <ng-container *ngIf="estaAbierto(evento.id)">
+        @for (solicitud of evento.solicitudes; track solicitud.id) {
+        <tr class="contenedor-solicitudes">
+          <td>{{ solicitud.nombre_usuario }}</td>
+          <td>{{ solicitud.email_usuario }}</td>
+          <td>
+            <span
+              [class.pendiente]="solicitud.estado === 'pendiente'"
+              [class.aceptado]="solicitud.estado === 'aceptado'"
+              [class.rechazado]="solicitud.estado === 'rechazado'"
+            >
+              {{ solicitud.estado }}
+            </span>
+          </td>
+          <td>{{ solicitud.fecha_solicitud }}</td>
+          <td>
+            <ng-container *ngIf="solicitud.estado === 'pendiente'">
+              <form
+                (ngSubmit)="aceptarSolicitud(solicitudForm.value)"
+                #solicitudForm="ngForm"
+              >
+                <input type="hidden" name="id" [ngModel]="solicitud.id" />
+                <input
+                  type="hidden"
+                  name="email"
+                  [ngModel]="solicitud.email_usuario"
+                />
+                <input
+                  type="hidden"
+                  name="nombre"
+                  [ngModel]="solicitud.nombre_usuario"
+                />
+                <input
+                  type="hidden"
+                  name="id_usuario"
+                  [ngModel]="solicitud.id_usuario"
+                />
+                <button type="submit" class="aceptar">Aceptar</button>
+              </form>
+              <button
+                class="rechazar"
+                (click)="rechazarSolicitud(solicitud.id)"
+              >
+                Rechazar
+              </button>
+            </ng-container>
+          </td>
+        </tr>
+        }
+      </ng-container>
+      }
+    </tbody>
+  </table>
+</div>

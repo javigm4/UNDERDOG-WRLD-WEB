@@ -1,0 +1,38 @@
+<div class="scroll-eventos">
+  <input
+    type="text"
+    placeholder="Buscar evento..."
+    [(ngModel)]="filtroEvento"
+    class="buscador-eventos"
+  />
+
+  <table class="tabla-solicitudes">
+    <tbody>
+      @for (evento of eventosFiltrados; track evento.id) {
+      <tr class="evento-header" (click)="toggleEvento(evento.id)">
+        <td colspan="4" class="evento-nombre">
+          <strong>{{ evento.nombre }}</strong>
+          <span class="flecha" [class.abierto]="estaAbierto(evento.id)">⮟</span>
+        </td>
+      </tr>
+
+      <ng-container *ngIf="estaAbierto(evento.id)">
+        @for (p of evento.participantes; track p.id) {
+        <tr class="contenedor-solicitudes participante-row">
+          <td class="participante-id">{{ p.id }}</td>
+          <td class="participante-nombre">{{ p.nombre_usuario }}</td>
+          <td class="participante-email">{{ p.email_usuario }}</td>
+          <td class="participante-eliminar">
+            <form (submit)="eliminarParticipante(p.id)" class="form-eliminar">
+              <input type="hidden" name="idParticipante" [value]="p.id" />
+              <button type="submit" class="eliminar">X</button>
+            </form>
+          </td>
+        </tr>
+
+        }
+      </ng-container>
+      }
+    </tbody>
+  </table>
+</div>

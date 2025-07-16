@@ -1,0 +1,195 @@
+.contenedor-evento {
+  position: relative;
+  margin: 20px;
+}
+
+/* Estilo del nombre del evento (selector) */
+.selector-nombre {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.selector-nombre:hover {
+  background-color: #2980b9;
+}
+
+.evento-boton {
+  background-color: #3399ff;
+  color: white;
+  font-weight: bold;
+  padding: 0.8em 1.2em;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00ffeeaa;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.evento-boton:hover {
+  background-color: #1a8cff;
+  box-shadow: 0 0 15px #00ffccbb;
+}
+
+/* Overlay del popup */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+/* Contenido del popup */
+.popup-contenido {
+  background: linear-gradient(135deg, #2c2c2c, #1f1f1f);
+  padding: 2.5em 3em;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(255, 170, 0, 0.5);
+  width: 90%;
+  max-width: 600px;
+  color: #f0e68c;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Formulario dentro del popup */
+.popup-contenido form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.popup-contenido label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #ffcc00;
+  text-shadow: 0 0 3px #ffaa00cc;
+}
+
+.popup-contenido input,
+.popup-contenido textarea {
+  background-color: #333333;
+  border: 1.5px solid #555555;
+  border-radius: 8px;
+  padding: 12px 15px;
+  font-size: 1rem;
+  color: #eee;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  resize: vertical;
+}
+
+.popup-contenido input:focus,
+.popup-contenido textarea:focus {
+  outline: none;
+  border-color: #ffaa00;
+  box-shadow: 0 0 8px #ffaa00cc;
+  background-color: #222;
+}
+
+.popup-contenido textarea {
+  min-height: 80px;
+}
+
+/* Botón cerrar dentro del popup */
+.popup-contenido button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: linear-gradient(45deg, #ffaa00, #ffcc33);
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #222;
+  cursor: pointer;
+  box-shadow: 0 5px 15px #ffaa0088;
+  transition: background 0.4s ease, transform 0.2s ease;
+}
+
+.popup-contenido button:hover {
+  background: linear-gradient(45deg, #ffcc33, #ffaa00);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px #ffbb0088;
+}
+
+
+/* Botón "X" para cerrar (posicionado arriba derecha) */
+.btn-cerrar {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #ffaa00;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.3s ease;
+  padding: 0;
+  user-select: none;
+}
+
+.btn-cerrar:hover {
+  color: #ffcc33;
+}
+
+/* Botón guardar cambios */
+.btn-guardar {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: linear-gradient(45deg, #28a745, #85d68e);
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 5px 15px #28a745aa;
+  transition: background 0.4s ease, transform 0.2s ease;
+}
+
+.btn-guardar:hover {
+  background: linear-gradient(45deg, #3ec63e, #a1ea9a);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px #3ec63eaa;
+}
+
+/* Quitamos margen y estilos al botón cerrar anterior dentro del form (si quedan) */
+.popup-contenido form > button[type="button"] {
+  display: none;
+}
+
+
+.btn-eliminar-cruz {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 10;
+}
+.btn-eliminar-cruz:hover {
+  background-color: #ff1a1a;
+  transform: scale(1.1);
+}

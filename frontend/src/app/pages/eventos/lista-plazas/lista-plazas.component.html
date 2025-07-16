@@ -1,0 +1,7 @@
+  <div class="app-lista-plazas">
+    @for(evento of eventos; track evento.id) {
+      <div class="col-md-6 mb-4">
+        <app-plaza [evento]="evento"></app-plaza>
+      </div>
+    }
+  </div>

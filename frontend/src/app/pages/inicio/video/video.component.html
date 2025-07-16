@@ -1,0 +1,14 @@
+<div class="video-row">
+  <div class="video-title">
+    <h3 [innerHTML]="sanitizedTitle"></h3>
+  </div>
+  <div class="video-embed" *ngIf="sanitizedUrl">
+    <iframe
+      [src]="sanitizedUrl"
+      width="300"
+      height="180"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>

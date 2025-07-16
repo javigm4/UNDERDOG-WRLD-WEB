@@ -1,0 +1,86 @@
+/* 1. Cargar la fuente personalizada */
+@font-face {
+  font-family: 'FreightGangsta';
+  src: url('/Freight Train Gangsta.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* 2. Estilos del navbar */
+.navbar {
+  background: linear-gradient(180deg, #1C1C1C 0%, #181818 100%);
+  background-image: url(/gotele.png);
+  padding: 0.7rem 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-title {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.login-link {
+  color: #DADADA;
+  text-decoration: none;
+  font-size: 2rem;
+  font-family: 'FreightGangsta', sans-serif;
+  padding-right: 40px;
+  padding-left: 20px;
+  border-right: 1px solid #DADADA;
+}
+
+.login-link p {
+  margin: 0;
+  transition:
+    transform 0.35s cubic-bezier(0.68, -0.6, 0.32, 1.6),
+    color 0.35s ease,
+    text-shadow 0.35s ease;
+}
+
+.login-link:hover p {
+  transform: scale(1.3) rotate(-5deg) translateY(-8px);
+  color: #C1272D;
+  text-shadow:
+    0 0 6px #7a2e2c,
+    0 0 15px #2e1a1a;
+}
+
+/* Íconos (Font Awesome) */
+.icon {
+  width: 40px;
+}
+
+.icon i {
+  font-size: 2rem;
+  color: #DADADA;
+  transition: transform 0.2s ease;
+}
+
+.icon:hover i {
+  transform: scale(1.7);
+}
+
+/* Imagen logo */
+img {
+  width: 150px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}

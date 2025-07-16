@@ -1,0 +1,198 @@
+<!-- SECCIÓN 1: SOBRE NOSOTROS -->
+<div class="slider-container">
+  <div class="slider-track">
+    <div class="slide">
+      <a href="#discordlink"
+        >💬 ÚNETE A NUESTRO DISCORD PARA INFORMARTE DE TODOS LOS EVENTOS</a
+      >
+    </div>
+    <div class="slide">
+      <a href="#podcastlink">🎙️ ESCUCHA NUESTRO PODCAST SEMANAL</a>
+    </div>
+    <div class="slide">
+      <a href="#podcastredeslink">🎬 VIDEO DIARIO EN TIKTOK E INSTAGRAM</a>
+    </div>
+    <div class="slide">
+      <a href="#twitterlink"
+        >🗣️ SÉ UN UNDERDOG Y COMÉNTANOS TUS OPINIONES EN NUESTRA RED SOCIAL</a
+      >
+    </div>
+
+    <!-- Duplicamos las slides para el bucle -->
+    <div class="slide">
+      <a href="#discordlink"
+        >💬 ÚNETE A NUESTRO DISCORD PARA INFORMARTE DE TODOS LOS EVENTOS</a
+      >
+    </div>
+    <div class="slide">
+      <a href="#podcastlink">🎙️ ESCUCHA NUESTRO PODCAST SEMANAL</a>
+    </div>
+    <div class="slide">
+      <a href="https://www.tiktok.com/@underdog.wrld"
+        >🎬 VIDEO DIARIO EN TIKTOK E INSTAGRAM</a
+      >
+    </div>
+    <div class="slide">
+      <a href="#twitterlink"
+        >🗣️ SÉ UN UNDERDOG Y COMÉNTANOS TUS OPINIONES EN NUESTRA RED SOCIAL</a
+      >
+    </div>
+  </div>
+</div>
+
+<div id="divGeneral">
+  <section class="inicio sobre section-animate fade-in">
+    <div class="inicio-texto fade-up">
+      <img
+        src="/underdoglogoinicio.png"
+        alt="Logo izquierda"
+        class="inicio-img pegatina pegatina-invertida fade-left"
+      />
+      <br />
+      <button class="inicio-btn fade-in" (click)="abrirModal()">
+        SOBRE NOSOTROS
+      </button>
+      <!-- Modal -->
+      <div *ngIf="modalVisible" class="modal" (click)="cerrarModal($event)">
+        <div class="modal-content" (click)="$event.stopPropagation()">
+          <span class="close-btn" (click)="cerrarModal($event)">&times;</span>
+          <p>
+            Somos <strong>UNDERDOG WRLD</strong>. No nacimos para encajar,
+            nacimos para construir lo que no existía.
+          </p>
+          <p>
+            UNDERDOG WRLD es un ecosistema cultural independiente donde el
+            talento real toma el protagonismo. No buscamos lo viral: buscamos lo
+            que tiene fondo, criterio y cultura.
+          </p>
+          <p>
+            Creamos un puente entre el underground y lo mainstream desde la
+            raíz: podcast, batallas, música, baile, graffiti y comunidad. Todo
+            lo que pasa en la calle… pero sin filtros.
+          </p>
+          <p>
+            Estamos construyendo algo más que un proyecto: una plataforma para
+            las voces que nunca se escuchan y el arte que no pide permiso.
+          </p>
+
+          Si conectas con esto, ya eres parte.
+          <p><strong>Bienvenido a UNDERDOG WRLD.</strong></p>
+          <p>Donde empieza lo que nadie se atrevió a hacer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section
+  id="discordlink"
+  class="discord-join-section section-animate fade-in"
+>
+  <div class="discord-content">
+    <div class="discord-bloque-img fade-left">
+      <img id="discordImagen" src="/discgraqffiti.png" alt="Discord Logo" />
+    </div>
+
+    <div class="discord-bloque-texto fade-up">
+      <p>
+        Únete a nuestro discord para estar informado de nuestros eventos,
+        podcast y mucho más.
+      </p>
+      <a href="https://discord.gg/YrW4HyrUjb">
+        <button class="discord-join-btn">🚀 SÉ UN UNDERDOG</button>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- SECCIÓN 2: PODCAST -->
+  <section id="podcastlink" class="inicio podcast section-animate fade-in">
+    <div class="inicio-texto fade-up">
+      <h1>PODCAST SEMANAL</h1>
+      <!-- COMPONENTE ANGULAR -->
+      <app-lista-videos class="fade-in"></app-lista-videos>
+    </div>
+  </section>
+
+  <!-- SECCION TWITTER BOTON -->
+  <section id="twitterlink" class="twitter-section section-animate fade-in">
+    <div>
+      <h1>UNDERDOG WRLD WEB</h1>
+
+      <div class="tweets-wrapper">
+        <div class="tweet">
+          <div class="tweet-header">
+            <img
+              src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png"
+              alt="Avatar"
+            />
+            <div>
+              <strong>beatmaster</strong>
+              <span>· 2h</span>
+            </div>
+          </div>
+          <p class="tweet-text">
+            Acabo de subir un beat sampleando soul de los 70s y quedó 🔥🔥🔥. Lo
+            dejo por aquí por si alguien quiere montarse algo →
+            soundcloud.com/underdogwrld
+          </p>
+        </div>
+
+        <div class="tweet">
+          <div class="tweet-header">
+            <img
+              src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png"
+              alt="Avatar"
+            />
+            <div>
+              <strong>grafitierx</strong>
+              <span>· 4h</span>
+            </div>
+          </div>
+          <p class="tweet-text">
+            Pegué esta pieza anoche en el muro del parque de Lavapiés. ¿Alguien
+            más ha visto lo que están montando allí? Brutal 🧱🎨
+          </p>
+        </div>
+      </div>
+
+      <button>ACCESO</button>
+    </div>
+  </section>
+
+  <!-- SECCIÓN FAQ -->
+  <section class="faq-section section-animate fade-in">
+    <div class="faq-container">
+      <h1>CONTACTANOS</h1>
+      <p>
+        ¿Tienes dudas sobre UNDERDOG WRLD? Déjanos tu pregunta y te respondemos
+        pronto.
+      </p>
+
+      <form class="faq-form">
+        <div class="form-group">
+          <label for="usuario">Correo electrónico o nombre de usuario</label>
+          <input
+            type="text"
+            id="usuario"
+            name="usuario"
+            placeholder="@underdog o correo@ejemplo.com"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="pregunta">Tu pregunta</label>
+          <textarea
+            id="pregunta"
+            name="pregunta"
+            rows="5"
+            placeholder="Escribe tu pregunta aquí..."
+            required
+          ></textarea>
+        </div>
+        <button type="submit">ENVIAR PREGUNTA</button>
+      </form>
+    </div>
+  </section>
+</div>

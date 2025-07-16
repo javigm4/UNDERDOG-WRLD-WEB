@@ -1,0 +1,65 @@
+<!-- Botón para eliminar evento -->
+
+<!-- Div principal que abre el popup de edición -->
+<div class="evento-boton" (click)="abrirPopup()">
+  <button class="btn-eliminar-cruz" (click)="abrirConfirmacionEliminar()">
+    ×
+  </button>
+  {{ evento.nombre }}
+</div>
+
+<!-- Popup flotante para edición -->
+<div class="popup-overlay" *ngIf="mostrarPopup">
+  <div class="popup-contenido">
+    <button class="btn-cerrar" type="button" (click)="cerrarPopup()">×</button>
+
+    <form (ngSubmit)="guardarCambios()">
+      <label for="nombre">Nombre:</label>
+      <input
+        type="text"
+        id="nombre"
+        [(ngModel)]="evento.nombre"
+        name="nombre"
+      />
+
+      <label for="fecha">Fecha:</label>
+      <input type="date" id="fecha" [(ngModel)]="evento.fecha" name="fecha" />
+
+      <label for="ubicacion">Ubicación:</label>
+      <input
+        type="text"
+        id="ubicacion"
+        [(ngModel)]="evento.ubicacion"
+        name="ubicacion"
+      />
+
+      <label for="descripcion">Descripción:</label>
+      <textarea
+        id="descripcion"
+        [(ngModel)]="evento.descripcion"
+        name="descripcion"
+      ></textarea>
+
+      <label for="max_participantes">Máximo de participantes:</label>
+      <input
+        type="number"
+        id="max_participantes"
+        [(ngModel)]="evento.max_participantes"
+        name="max_participantes"
+      />
+
+      <button type="submit" class="btn-guardar">Guardar cambios</button>
+    </form>
+  </div>
+</div>
+
+<!-- Popup de confirmación para eliminar -->
+<div class="popup-overlay" *ngIf="mostrarConfirmacionEliminar">
+  <div class="popup-contenido">
+    <p>¿Seguro que quieres eliminar el evento "{{ evento.nombre }}"?</p>
+    <button (click)="confirmarEliminar()" class="btn-eliminar-confirmar">
+      Sí, eliminar
+    </button>
+    <button (click)="cancelarEliminar()" class="btn-cancelar">Cancelar</button>
+  </div>
+</div>

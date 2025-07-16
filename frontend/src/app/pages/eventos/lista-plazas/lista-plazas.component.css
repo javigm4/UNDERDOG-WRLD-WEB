@@ -1,0 +1,11 @@
+/* Contenedor vertical de eventos */
+.app-lista-plazas {
+  display: flex;
+  flex-direction: column;   /* apila de arriba a abajo */
+  gap: 2rem;                /* espacio entre cada plaza */
+  width: 100%;              /* ocupa todo el ancho del padre */
+  padding: 1rem 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  height: 67.1vh; /* Altura del contenedor */
+}

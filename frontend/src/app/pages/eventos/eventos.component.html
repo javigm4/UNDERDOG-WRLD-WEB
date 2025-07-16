@@ -1,0 +1,30 @@
+<div id="general">
+  <h1>Próximos eventos</h1>
+  <div class="eventos-container">
+    <aside>
+      @for(evento of eventos; track evento.id) {
+      <app-enlaces [evento]="evento"></app-enlaces>
+      }
+    </aside>
+    <section class="eventos-section">
+      <app-lista-plazas [eventos]="eventos"></app-lista-plazas>
+    </section>
+  </div>
+
+  <div id="creator">
+    <p>¿Eres un creador?</p>
+    <button (click)="abrirForm()">Pincha aquí</button>
+  </div>
+  <form id="creatorForm" (submit)="accederComoAdmin($event)">
+    <p>Introduce la contraseña para acceder a los privilegios:</p>
+    <label for="password">Contraseña:</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      [(ngModel)]="password"
+      required
+    />
+    <button type="submit">Acceder</button>
+  </form>
+</div>

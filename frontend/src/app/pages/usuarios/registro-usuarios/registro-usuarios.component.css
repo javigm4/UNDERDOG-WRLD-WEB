@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  color: #f2f2f2;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+              url('/wallpaperRegistro.png');
+
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-position: center;
+  height: 82.6vh; /* que body ocupe toda la ventana */
+  display: flex;
+  justify-content: center;
+}
+
+div {
+  margin-top: 100px;
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  height: 580px;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+form {
+  width: 6000px;
+  padding: 20px 40px;
+  background-color: rgba(20, 20, 20, 0.95);
+  border: 2px solid #2e2e2e;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+  position: relative;
+  font-size: 18px;
+  color: #eee;
+}
+
+
+
+@keyframes neonBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 16px;
+  color: #C24C34;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: 97%;
+  padding: 12px;
+  margin-bottom: 20px;
+  background-color: #1a1a1a;
+  border: 2px solid #333;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 30px;
+  transition: border 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #C24C34;
+  outline: none;
+  box-shadow: 0 0 10px #C24C34;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #C24C34;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: #ff33a6;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px #ff33a6;
+}
+
+p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+p a {
+  color: #00ffff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+p a:hover {
+  color: #ff0080;
+  text-shadow: 0 0 5px #ff0080;
+}

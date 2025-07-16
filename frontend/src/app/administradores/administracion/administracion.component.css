@@ -1,0 +1,131 @@
+#general {
+ background-image: url(/fondoadmin.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  margin-top: -20px;
+  color:white;
+}
+
+body {
+  background-color: #0f0f0f;
+  color: #f5f5f5;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  color: #00ffee;
+  text-shadow: 0 0 10px #00ffee;
+  border-bottom: 2px solid #00ffee;
+  padding-bottom: 0.4em;
+}
+
+p {
+  line-height: 1.6;
+  font-size: 1.1em;
+}
+
+form {
+  background-color: #1a1a1a;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #00ffee44;
+  margin-top: 1em;
+}
+
+label {
+  display: block;
+  margin-top: 1em;
+  font-weight: bold;
+  color: #ffaa00;
+}
+
+input, textarea {
+  width: 100%;
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid #ffaa00;
+  border-radius: 5px;
+  padding: 0.5em;
+  margin-top: 0.5em;
+}
+
+button {
+  background-color: #ffaa00;
+  color: #000;
+  font-weight: bold;
+  padding: 0.7em 1.5em;
+  border: none;
+  border-radius: 8px;
+  margin-top: 1.5em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ffcc00;
+}
+
+section {
+  margin-top: 3em;
+}
+
+#general {
+  padding: 2em;
+  max-width: 100%;
+  margin: auto;
+}
+
+
+h1,h2 {
+  text-align: center;
+}
+
+
+.bloques-admin {
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+  flex-wrap: wrap;
+}
+
+.bloques-admin section {
+  flex: 1 1 45%;
+  background-color: #1a1a1a;
+  padding: 1.5em;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #00ffee44;
+}
+
+/* Estilo opcional para que se mantengan bien en móviles */
+@media (max-width: 768px) {
+  .bloques-admin {
+    flex-direction: column;
+  }
+
+  .bloques-admin section {
+    width: 100%;
+  }
+}
+
+
+
+.lista-eventos {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+}
+
+/* Opcional: estilo para cada tarjeta de evento */
+app-edicion-evento {
+  flex: 0 0 auto;
+  min-width: 250px;
+}
+
+

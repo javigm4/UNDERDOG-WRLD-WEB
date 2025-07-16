@@ -1,0 +1,101 @@
+<div id="general">
+  <h1>ADMINISTRACION DE LA PAGINA</h1>
+  <p>
+    Hola, administrador de UNDERDOG. Te habla Javier Guerrero, el creador de la
+    pagina web.
+  </p>
+  <p>
+    He diseñado esta sección solo para TI. Aquí podrás acceder a dos componentes
+    esenciales
+  </p>
+  <p>
+    En primer lugar podrás crear nuevos eventos y editar los que ya existen.
+  </p>
+  <p>
+    En segundo lugar podrás aceptar o denegar las solicitudes de las personas
+    que se han inscrito en el evento. Recuerda revisar el correo oficial de
+    Underdog WRLD para ver los vídeos de los usuarios que se han inscrito.
+  </p>
+  <p>
+    Si tienes alguna duda, puedes contactar conmigo en
+    javierguerreromontero1gmail.com
+  </p>
+  <p>Un abrazo... ¡Y a batallar!</p>
+  <p>Javier Guerrero.</p>
+
+  <!-- 🔥 Nueva disposición -->
+  <div class="bloques-admin">
+    <section>
+      <h2>SOLICITUDES</h2>
+      <app-solicitudes></app-solicitudes>
+    </section>
+    <section>
+      <h2>PARTICIPANTES</h2>
+      <app-participantes></app-participantes>
+    </section>
+  </div>
+
+  <section>
+    <h2>EDICION DE LOS EVENTOS</h2>
+    <div class="lista-eventos">
+      @for (evento of eventos; track evento.id) {
+      <app-edicion-eventos
+        [evento]="evento"
+        (eventoEliminado)="eliminarEventoDelArray($event)"
+      ></app-edicion-eventos>
+      }
+    </div>
+
+    <div>
+      <h2>CREACION DE EVENTOS</h2>
+      <form (ngSubmit)="crearEvento()" #formEvento="ngForm">
+        <label for="nombreEvento">Nombre del evento:</label>
+        <input
+          type="text"
+          id="nombreEvento"
+          name="nombreEvento"
+          [(ngModel)]="nuevoEvento.nombre"
+          required
+        />
+
+        <label for="fechaEvento">Fecha del evento:</label>
+        <input
+          type="date"
+          id="fechaEvento"
+          name="fechaEvento"
+          [(ngModel)]="nuevoEvento.fecha"
+          required
+        />
+
+        <label for="descripcionEvento">Descripción del evento:</label>
+        <textarea
+          id="descripcionEvento"
+          name="descripcionEvento"
+          [(ngModel)]="nuevoEvento.descripcion"
+          required
+        ></textarea>
+
+        <label for="max">Máximo de participantes:</label>
+        <input
+          type="number"
+          id="max"
+          name="max"
+          min="1"
+          [(ngModel)]="nuevoEvento.max_participantes"
+          required
+        />
+
+        <label for="lugarEvento">Lugar del evento:</label>
+        <input
+          type="text"
+          id="lugarEvento"
+          name="lugarEvento"
+          [(ngModel)]="nuevoEvento.ubicacion"
+          required
+        />
+
+        <button type="submit">Crear Evento</button>
+      </form>
+    </div>
+  </section>
+</div>

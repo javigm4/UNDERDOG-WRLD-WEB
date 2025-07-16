@@ -1,0 +1,38 @@
+<div class="app-lista-plazas">
+  <div class="plaza" [id]="idSanitizado" [class.evento-lleno]="plazasLibres === 0">
+    <img src="/chincheta.png" alt="Chincheta decorativa" />
+    <div class="bloque">
+      <h2>{{ evento.nombre }}</h2>
+      <p><strong>Fecha:</strong> {{ evento.fecha }}</p>
+      <p><strong>Ubicación:</strong> {{ evento.ubicacion }}</p>
+
+      <!-- Pop-up oculto -->
+      <div class="oculto" [class.show]="mostrarPopup">
+        <h2>{{ evento.nombre }}</h2>
+        <p><strong>Fecha:</strong> {{ evento.fecha }}</p>
+        <p><strong>Ubicación:</strong> {{ evento.ubicacion }}</p>
+        <p>{{ evento.descripcion }}</p>
+        <button (click)="togglePopup()">Cerrar</button>
+      </div>
+    </div>
+
+    <div class="botones bloque">
+      <button id="sabermas" (click)="togglePopup()">Saber más</button>
+
+      <button
+        id="inscribirme"
+        [disabled]="plazasLibres === 0"
+      >
+        Inscribirme
+      </button>
+    </div>
+
+    <p id="plazasdisponibles">Plazas disponibles: {{ plazasLibres }}</p>
+
+    @if (plazasLibres === 0) {
+        <div class="evento-lleno-cartel">EVENTO LLENO</div>
+
+    }
+
+  </div>
+</div>

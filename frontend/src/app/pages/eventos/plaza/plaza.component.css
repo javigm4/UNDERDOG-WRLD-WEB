@@ -1,0 +1,258 @@
+.app-lista-plazas {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Fondo semi-transparente para el popup */
+.app-lista-plazas::before {
+  content: '';
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 999;
+  pointer-events: auto;
+}
+
+/* Cuando mostrarPopup == true */
+.app-lista-plazas.popup-activo::before {
+  display: block;
+}
+
+/* Contenedor de cada evento */
+.plaza {
+  position: relative;
+  background-color: #ecd993;
+  padding: 2rem;
+  padding-top: 3.5rem;
+  box-shadow: 1px 15px 10px rgba(0, 0, 0, 0.2);
+  font-size: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 80px;
+  border-top-left-radius: 50px;
+  z-index: 1;
+}
+
+/* Chincheta centrada arriba */
+.plaza img {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+h2 {
+  margin: -12px;
+}
+
+.bloque {
+  display: inline-block;
+}
+
+.botones {
+  float: right;
+}
+
+.botones button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 20px 18px;
+  margin-right: 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 30px;
+}
+
+.botones button:last-child {
+  margin-right: 0;
+}
+
+.botones button:hover {
+  background-color: #1d6fa5;
+}
+
+.botones button:focus {
+  outline: 2px solid #1d6fa5;
+  outline-offset: 2px;
+}
+
+/* Botón Saber más */
+#sabermas {
+  background-color: #367672;
+}
+
+#sabermas:hover {
+  background-color: #2b5958;
+}
+
+/* Botón Inscribirme */
+#inscribirme {
+  background-color: #6a2237;
+}
+
+#inscribirme:hover {
+  background-color: #4b1728;
+}
+
+#plazasdisponibles {
+  color: red;
+  margin-top: 10px;
+}
+
+/* Animaciones del popup */
+@keyframes aparecerPopup {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes desaparecerPopup {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+}
+
+/* Pop-up oculto ultra profesional */
+.oculto {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background: linear-gradient(145deg, #fff, #f4f4f4);
+  padding: 2rem;
+  border: 2px solid #333;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  max-width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  border-radius: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1a1a1a;
+  line-height: 1.5;
+  user-select: text;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.6);
+  animation-fill-mode: forwards;
+}
+
+/* Clase que activa la animación de entrada */
+.oculto.show {
+  animation: aparecerPopup 0.4s ease forwards;
+}
+
+/* Clase que activa la animación de salida */
+.oculto.hide {
+  animation: desaparecerPopup 0.3s ease forwards;
+}
+
+/* Encabezado del popup */
+.oculto h2 {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  color: #2c3e50;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Contenido del popup */
+.oculto p {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+/* Botón cerrar dentro del popup */
+.oculto button {
+  display: block;
+  margin: 2rem auto 0;
+  background: #2c7d78;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 2.2rem;
+  font-size: 1.05rem;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(44, 125, 120, 0.4);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.oculto button:hover {
+  background: #22645f;
+  transform: scale(1.05);
+}
+
+.oculto button:focus {
+  outline: 3px solid #22645f;
+  outline-offset: 4px;
+}
+
+/* Scroll personalizado */
+.oculto::-webkit-scrollbar {
+  width: 8px;
+}
+.oculto::-webkit-scrollbar-track {
+  background: #eee;
+}
+.oculto::-webkit-scrollbar-thumb {
+  background: #2c7d78;
+  border-radius: 4px;
+}
+.plaza.evento-lleno {
+  background-color: #7a7a7a; /* color más oscuro */
+  color: #eee;
+  position: relative;
+}
+
+/* Deshabilitar solo el botón "Inscribirme" */
+.plaza.evento-lleno #inscribirme {
+  background-color: #4b1728;
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* El botón "Saber más" sigue activo */
+.plaza.evento-lleno #sabermas {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* Cartel llamativo "EVENTO LLENO" */
+.evento-lleno-cartel {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #b71c1c;
+  color: white;
+  font-weight: 900;
+  font-size: 2rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0 0 10px 10px;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  user-select: none;
+}

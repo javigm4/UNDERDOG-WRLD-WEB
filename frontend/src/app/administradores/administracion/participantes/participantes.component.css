@@ -1,0 +1,286 @@
+/* ======= GENERAL STYLES ======= */
+#general {
+  background-image: url(/fondoadmin.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 2em;
+  max-width: 100%;
+  margin: auto;
+}
+
+body {
+  background-color: #0f0f0f;
+  color: #f5f5f5;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  color: #00ffee;
+  text-shadow: 0 0 10px #00ffee;
+  border-bottom: 2px solid #00ffee;
+  padding-bottom: 0.4em;
+  text-align: center;
+}
+
+p {
+  line-height: 1.6;
+  font-size: 1.1em;
+}
+
+section {
+  margin-top: 3em;
+}
+
+/* ======= FORM ELEMENTS ======= */
+form {
+  background-color: #1a1a1a;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #00ffee44;
+  margin-top: 1em;
+}
+
+label {
+  display: block;
+  margin-top: 1em;
+  font-weight: bold;
+  color: #ffaa00;
+}
+
+input, textarea {
+  width: 100%;
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid #ffaa00;
+  border-radius: 5px;
+  padding: 0.5em;
+  margin-top: 0.5em;
+}
+
+/* ======= BUTTONS ======= */
+button {
+  background-color: #ffaa00;
+  color: #000;
+  font-weight: bold;
+  padding: 0.7em 1.5em;
+  border: none;
+  border-radius: 8px;
+  margin-top: 1.5em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ffcc00;
+}
+
+/* ======= TABLAS ======= */
+.tabla-solicitudes {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2em;
+  background-color: #1a1a1a;
+  box-shadow: 0 0 15px #00ffee44;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tabla-solicitudes thead {
+  background-color: #00ffee22;
+}
+
+.tabla-solicitudes th,
+.tabla-solicitudes td {
+  padding: 1em;
+  text-align: center;
+  border-bottom: 1px solid #2e2e2e;
+}
+
+.tabla-solicitudes th {
+  color: #00ffee;
+  font-weight: bold;
+  text-shadow: 0 0 5px #00ffee;
+}
+
+.tabla-solicitudes tr:hover {
+  background-color: #2e2e2e;
+}
+
+.tabla-solicitudes button {
+  margin: 0 0.3em;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.rechazar {
+  background-color: red;
+}
+
+.aceptar {
+  background-color: green;
+}
+
+/* ======= EVENTO HEADER ======= */
+.evento-header td {
+  background-color: #ffaa0022;
+  font-weight: bold;
+  text-align: left;
+  color: #ffaa00;
+  padding: 1em;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.evento-header:hover {
+  background-color: #ffaa0044;
+}
+
+.flecha {
+  float: right;
+  transition: transform 0.3s ease;
+}
+
+.flecha.abierto {
+  transform: rotate(180deg);
+}
+
+/* ======= ESTADOS ======= */
+.pendiente {
+  color: #ffaa00;
+  font-weight: bold;
+  text-shadow: 0 0 5px #ffaa00;
+}
+
+.aceptado {
+  color: #00ff88;
+  font-weight: bold;
+  text-shadow: 0 0 5px #00ff88;
+}
+
+.rechazado {
+  color: #ff4444;
+  font-weight: bold;
+  text-shadow: 0 0 5px #ff4444;
+}
+
+/* ======= SCROLL AREA ======= */
+.scroll-eventos {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 0.5em;
+  margin-top: 2em;
+}
+
+.scroll-eventos::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll-eventos::-webkit-scrollbar-thumb {
+  background-color: #ffaa00;
+  border-radius: 4px;
+}
+
+.scroll-eventos::-webkit-scrollbar-track {
+  background-color: #2a2a2a;
+}
+
+/* ======= BUSCADOR ======= */
+.buscador-eventos {
+  width: 60%;
+  max-width: 400px;
+  margin: 0 auto;
+  border: 2px solid #ffaa00;
+  border-radius: 6px;
+  background-color: #1a1a1a;
+  color: #ffaa00;
+  font-size: 0.9em;
+  box-shadow: 0 0 8px #ffaa0044;
+  display: block;
+  text-align: center;
+}
+
+/* ======= FILAS DE PARTICIPANTES ======= */
+.participante-row {
+  display: table-row;
+}
+
+.participante-row td {
+  vertical-align: middle;
+  padding: 1em;
+  position: relative;
+}
+
+.participante-nombre,
+.participante-email {
+  padding-right: 1em;
+}
+
+/* ======= CELDA Y FORMULARIO DE ELIMINACIÓN ======= */
+.participante-eliminar {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Formulario completamente invisible */
+.form-eliminar {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: inline;
+}
+
+/* Botón "X" minimalista y alineado */
+button.eliminar {
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.2em 0.6em;
+  font-weight: bold;
+  font-size: 0.95em;
+  cursor: pointer;
+  line-height: 1;
+  vertical-align: middle;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.eliminar:hover {
+  background-color: #ff0000;
+  transform: scale(1.1);
+}
+
+
+/* ======= ANIMACIÓN ======= */
+.contenedor-solicitudes {
+  padding: 0;
+  background-color: #222;
+  animation: desplegar 0.3s ease-in-out;
+}
+
+@keyframes desplegar {
+  from { opacity: 0; transform: scaleY(0.9); }
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+/* ======= SUBTABLAS ======= */
+.subtabla {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.subtabla th,
+.subtabla td {
+  padding: 0.8em;
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
