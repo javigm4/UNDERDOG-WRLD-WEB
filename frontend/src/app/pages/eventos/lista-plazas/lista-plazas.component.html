@@ -1,7 +1,9 @@
-  <div class="app-lista-plazas">
-    @for(evento of eventos; track evento.id) {
-      <div class="col-md-6 mb-4">
-        <app-plaza [evento]="evento"></app-plaza>
-      </div>
-    }
+<div class="app-lista-plazas">
+  @if (eventos.length == 0) {
+  <h2>No hay eventos disponibles aún.</h2>
+  } @else { @for(evento of eventos; track evento.id) {
+  <div class="col-md-6 mb-4">
+    <app-plaza [evento]="evento"></app-plaza>
   </div>
+  } }
+</div>

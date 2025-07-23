@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { EventosService } from '../../../services/eventos.service';
 import { SolicitudesService } from '../../../services/solicitudes.service';
 import { AuthService } from '../../../services/auth.service';
-import { ParticipantesComponent } from '../participantes/participantes.component';
 import { ParticipantesService } from '../../../services/participantes.service';
 
 type Usuario = {
@@ -21,8 +20,9 @@ export class SolicitudesComponent implements OnInit {
   eventosConSolicitudes: any[] = [];
   usuarios: Usuario[] = [];
   filtroEvento: string = '';
-
   eventoAbiertoId: number | null = null;
+  filtrosPorEvento: { [eventoId: number]: string } = {};
+mostrarInfoId: number | null = null;
 
   constructor(
     private eventosService: EventosService,
@@ -35,17 +35,15 @@ export class SolicitudesComponent implements OnInit {
     this.cargarDatos();
   }
 
-  //------------------------------
   rechazarSolicitud(solicitudId: number): void {
-  this.solicitudesService.rechazarSolicitud(solicitudId).subscribe({
-    next: () => {
-      console.log(`Solicitud rechazada: ${solicitudId}`);
-      this.cargarDatos(); // recarga datos tras actualizar estado
-    },
-    error: (err) => console.error('Error rechazando solicitud:', err),
-  });
-}
-  //------------------------------
+    this.solicitudesService.rechazarSolicitud(solicitudId).subscribe({
+      next: () => {
+        console.log(`Solicitud rechazada: ${solicitudId}`);
+        this.cargarDatos();
+      },
+      error: (err) => console.error('Error rechazando solicitud:', err),
+    });
+  }
 
   aceptarSolicitud(data: {
     id: number;
@@ -55,14 +53,12 @@ export class SolicitudesComponent implements OnInit {
   }) {
     this.solicitudesService.aceptarSolicitud(data.id).subscribe({
       next: (res: any) => {
-        // res.participante es el participante creado en backend
         if (res.participante) {
           this.participantesService.emitirParticipanteAgregado(
             res.participante
           );
         }
 
-        // Actualiza estado local para que cambie UI
         const solicitud = this.eventosFiltrados
           .flatMap((evento) => evento.solicitudes)
           .find((s) => s.id === data.id);
@@ -80,7 +76,6 @@ export class SolicitudesComponent implements OnInit {
     }
     return null;
   }
-
 
   cargarDatos(): void {
     Promise.all([
@@ -100,6 +95,7 @@ export class SolicitudesComponent implements OnInit {
                 ...s,
                 nombre_usuario: usuario?.name || 'Desconocido',
                 email_usuario: usuario?.email || '',
+                enlace_tiktok: s.enlace_tiktok || '', // <-- Aquí se añade
               };
             });
 
@@ -128,4 +124,21 @@ export class SolicitudesComponent implements OnInit {
       evento.nombre.toLowerCase().includes(filtro)
     );
   }
+
+  solicitudesFiltradas(evento: any): any[] {
+  const filtro = (this.filtrosPorEvento[evento.id] || '').toLowerCase().trim();
+
+  if (!filtro) return evento.solicitudes;
+
+  return evento.solicitudes.filter((solicitud: any) => {
+    return (
+      solicitud.nombre_usuario?.toLowerCase().includes(filtro) ||
+      solicitud.email_usuario?.toLowerCase().includes(filtro) ||
+      solicitud.enlace_tiktok?.toLowerCase().includes(filtro) ||
+      solicitud.estado?.toLowerCase().includes(filtro) ||
+      solicitud.fecha_solicitud?.toLowerCase().includes(filtro)
+    );
+  });
+}
+
 }

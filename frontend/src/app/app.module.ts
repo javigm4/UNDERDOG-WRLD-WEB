@@ -21,6 +21,7 @@ import { EdicionEventosComponent } from './administradores/administracion/edicio
 import { EnlacesComponent } from './pages/eventos/enlaces/enlaces.component';
 import { FormsModule } from '@angular/forms';
 import { ParticipantesComponent } from './administradores/administracion/participantes/participantes.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,6 @@ import { ParticipantesComponent } from './administradores/administracion/partici
     InicioComponent,
     ListaVideosComponent,
     VideoComponent,
-    IniciarSesionComponent,
     RegistroUsuariosComponent,
     FooterComponent,
     ContactanosComponent,
@@ -39,7 +39,8 @@ import { ParticipantesComponent } from './administradores/administracion/partici
     AdministracionComponent,
     EdicionEventosComponent,
     SolicitudesComponent,
-    ParticipantesComponent
+    ParticipantesComponent,
+    IniciarSesionComponent
 
   ],
   imports: [
@@ -48,6 +49,7 @@ import { ParticipantesComponent } from './administradores/administracion/partici
     HttpClientModule,
     EnlacesComponent,
     FormsModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

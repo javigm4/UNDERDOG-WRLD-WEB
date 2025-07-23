@@ -15,6 +15,29 @@ class SolicitudesController extends Controller
         return $solicitudes;
     }
 
+    public function store(Request $request)
+    {
+        $request->validate([
+            'id_usuario' => 'required|exists:users,id',
+            'id_evento' => 'required|exists:eventos,id',
+            'estado' => 'in:pendiente,aceptado,rechazado',
+            'enlace_tiktok' => 'required',
+        ]);
+
+        $solicitud = Solicitud::create([
+            'id_usuario' => $request->id_usuario,
+            'id_evento' => $request->id_evento,
+            'estado' => 'pendiente',
+            'enlace_tiktok' => $request->enlace_tiktok,
+        ]);
+
+        return response()->json([
+            'mensaje' => 'Solicitud creada exitosamente',
+            'solicitud' => $solicitud
+        ], 201);
+    }
+
+
     public function aceptarSolicitud($id)
     {
         $solicitud = Solicitud::find($id);
@@ -51,5 +74,13 @@ class SolicitudesController extends Controller
         $solicitud->estado = 'rechazado';
         $solicitud->save();
         return response()->json(['mensaje' => 'Solicitud rechazada exitosamente']);
+    }
+
+
+    public function getByEventoId($id)
+    {
+        $solicitudes = Solicitud::where('id_evento', $id)->get();
+
+        return response()->json($solicitudes);
     }
 }

@@ -13,10 +13,11 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
   // auth methods ... el observable es para que se pueda subscribir a los cambios a tiempo real
-  login(formData: FormData): Observable<any> {
-    return this.http.post<any>(this.apiUrl, formData, {
-      withCredentials: true,
-    });
+
+
+
+  login(credentials: { email: string; password: string }) {
+    return this.http.post<any>(this.apiUrl, credentials);
   }
 
   register(data: any): Observable<any> {
@@ -65,7 +66,6 @@ export class AuthService {
     }
     return null;
   }
-
 
   //obtener todos los usuarios
   getUsuarios(): Observable<any> {

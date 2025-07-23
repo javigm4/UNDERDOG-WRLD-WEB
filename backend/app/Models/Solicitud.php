@@ -12,9 +12,12 @@ class Solicitud extends Model
     protected $table = 'solicitudes';
 
     protected $fillable = [
-        'id_evento',
         'id_usuario',
+        'id_evento',
+        'estado',
+        'enlace_tiktok',
     ];
+
     public $timestamps = false;
 
     public function evento()

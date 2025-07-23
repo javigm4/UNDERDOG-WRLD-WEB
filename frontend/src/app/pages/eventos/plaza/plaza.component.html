@@ -1,38 +1,100 @@
-<div class="app-lista-plazas">
-  <div class="plaza" [id]="idSanitizado" [class.evento-lleno]="plazasLibres === 0">
+<div class="app-lista-plazas" [class.popup-activo]="mostrarPopup">
+  <div
+    class="plaza"
+    [id]="idSanitizado"
+    [class.evento-lleno]="plazasLibres === 0 || eventoCerrado || yaInscrito"
+  >
     <img src="/chincheta.png" alt="Chincheta decorativa" />
-    <div class="bloque">
-      <h2>{{ evento.nombre }}</h2>
-      <p><strong>Fecha:</strong> {{ evento.fecha }}</p>
-      <p><strong>Ubicación:</strong> {{ evento.ubicacion }}</p>
 
-      <!-- Pop-up oculto -->
-      <div class="oculto" [class.show]="mostrarPopup">
+    <div class="contenido-evento">
+      <div class="info">
         <h2>{{ evento.nombre }}</h2>
         <p><strong>Fecha:</strong> {{ evento.fecha }}</p>
         <p><strong>Ubicación:</strong> {{ evento.ubicacion }}</p>
-        <p>{{ evento.descripcion }}</p>
-        <button (click)="togglePopup()">Cerrar</button>
+        <p id="plazasdisponibles">Plazas disponibles: {{ plazasLibres }}</p>
       </div>
     </div>
 
-    <div class="botones bloque">
+    <!-- Botones -->
+    <div class="botones-bajo">
       <button id="sabermas" (click)="togglePopup()">Saber más</button>
-
       <button
         id="inscribirme"
-        [disabled]="plazasLibres === 0"
+        (click)="mostrarFormularioInscripcion()"
+        [disabled]="plazasLibres === 0 || eventoCerrado"
       >
         Inscribirme
       </button>
     </div>
 
-    <p id="plazasdisponibles">Plazas disponibles: {{ plazasLibres }}</p>
+    <!-- Popup informativo -->
+    <div class="oculto" *ngIf="mostrarPopup" [class.show]="mostrarPopup">
+      <h2>{{ evento.nombre }}</h2>
+      <p><strong>Fecha:</strong> {{ evento.fecha }}</p>
+      <p><strong>Ubicación:</strong> {{ evento.ubicacion }}</p>
+      <p>{{ evento.descripcion }}</p>
+      <button (click)="togglePopup()">Cerrar</button>
+    </div>
 
-    @if (plazasLibres === 0) {
-        <div class="evento-lleno-cartel">EVENTO LLENO</div>
+    <!-- Popup de formulario -->
+    <div class="popup-formulario" *ngIf="formularioVisible">
+      <div class="popup-contenido">
+        <button class="cerrar" (click)="formularioVisible = false">×</button>
+        <form (submit)="inscribirUsuario(); $event.preventDefault()">
+          <label for="nombre">Nombre de usuario:</label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            [(ngModel)]="nombreUsuario"
+            readonly
+          />
 
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="emailUsuario"
+            readonly
+          />
+
+          <input type="hidden" name="id_evento" [ngModel]="evento.id" />
+          <input type="hidden" name="id_usuario" [ngModel]="idUsuario" />
+
+          <label for="procedencia">¿De dónde eres?</label>
+          <input
+            type="text"
+            id="procedencia"
+            name="procedencia"
+            [(ngModel)]="procedenciaUsuario"
+          />
+
+          <label for="tiktok">Perfil de TikTok:</label>
+          <input
+            type="text"
+            id="tiktok"
+            name="tiktok"
+            [(ngModel)]="enlaceTiktok"
+          />
+
+          <button
+            type="submit"
+            [disabled]="plazasLibres === 0 || eventoCerrado"
+          >
+            Confirmar inscripción
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Indicadores de estado -->
+    @if (yaInscrito) {
+      <div class="evento-lleno-cartel">YA INSCRITO</div>
+    } @else if (eventoCerrado) {
+      <div class="evento-lleno-cartel">EVENTO CERRADO</div>
+    } @else if (plazasLibres === 0) {
+      <div class="evento-lleno-cartel">EVENTO LLENO</div>
     }
-
   </div>
 </div>

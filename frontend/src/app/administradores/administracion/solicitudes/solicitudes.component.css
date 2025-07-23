@@ -31,9 +31,7 @@ p {
 
 form {
   background-color: #1a1a1a;
-  padding: 2em;
   border-radius: 10px;
-  box-shadow: 0 0 20px #00ffee44;
   margin-top: 1em;
 }
 
@@ -102,9 +100,12 @@ h1,h2 {
 
 .tabla-solicitudes th,
 .tabla-solicitudes td {
-  padding: 1em;
+  padding: 2em;
+  padding-left:0em;
+  padding-right:0em;
   text-align: center;
   border-bottom: 1px solid #2e2e2e;
+  font-size: 12px;
 }
 
 .tabla-solicitudes th {
@@ -145,8 +146,7 @@ h1,h2 {
 }
 
 .tabla-solicitudes button {
-  margin: 0 0.3em;
-  padding: 0.5em 1em;
+  padding: 0em 0em;
   border: none;
   border-radius: 6px;
   font-weight: bold;
@@ -238,4 +238,124 @@ h1,h2 {
   box-shadow: 0 0 8px #ffaa0044;
   display: block;
   text-align: center;
+}
+
+
+
+
+.acciones-solicitud {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estética coherente con estilo neón oscuro */
+.boton-aceptar,
+.boton-rechazar {
+  font-size: 1.3rem;
+  padding: 6px 10px;
+  margin: 0;
+  background-color: #1a1a1a;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Aceptar: verde flúor */
+.boton-aceptar {
+  color: #00ff88;
+  box-shadow: 0 0 6px #00ff88aa;
+}
+.boton-aceptar:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px #00ff88;
+}
+
+/* Rechazar: rojo brillante */
+.boton-rechazar {
+  color: #ff4444;
+  box-shadow: 0 0 6px #ff4444aa;
+}
+.boton-rechazar:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px #ff4444;
+}
+
+#celdaSolicitud {
+  position: relative;
+}
+
+
+.popup-info {
+  position: absolute;
+  z-index:999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1a1a1a;
+  border-radius: 14px;
+  padding: 1.5em 2em;
+  box-shadow: 0 0 30px #00ffee66;
+  min-width: 280px;
+  max-width: 90vw;
+  max-height: 70vh;
+  overflow-y: auto;
+  color: #fff;
+  animation: fadeinPopup 0.3s ease-out;
+}
+
+/* Contenido del popup */
+.popup-contenido-info h3 {
+  font-size: 1.4rem;
+  color: #00ffee;
+  margin-bottom: 1em;
+  text-align: center;
+  text-shadow: 0 0 6px #00ffee88;
+}
+
+.popup-contenido-info p {
+  margin-bottom: 0.8em;
+  font-size: 1.05em;
+  color: #e0e0e0;
+  line-height: 1.5;
+}
+
+.popup-contenido-info strong {
+  color: #ffaa00;
+}
+
+/* Botón cerrar */
+.popup-contenido-info .cerrar {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  background: none;
+  border: none;
+  color: #ffaa00;
+  font-size: 1.4em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.popup-contenido-info .cerrar:hover {
+  transform: scale(1.2);
+}
+
+/* Animación de entrada */
+@keyframes fadeinPopup {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }

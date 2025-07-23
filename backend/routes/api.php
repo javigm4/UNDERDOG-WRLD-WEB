@@ -46,8 +46,14 @@ Route::post('/añadir-participante', [ParticipantesController::class, 'añadirPa
 Route::post('/crearEvento', [EventosController::class, 'store']);
 Route::put('/eventos/{id}', [EventosController::class, 'update']);
 Route::delete('/eventos/{id}', [EventosController::class, 'destroy']);
-
+Route::post('/crear-solicitud', [SolicitudesController::class, 'store']);
 
 //aceptar denegar
 Route::post('/aceptar-solicitud/{id}', [SolicitudesController::class, 'aceptarSolicitud']);
 Route::post('/rechazar-solicitud/{id}', [SolicitudesController::class, 'rechazarSolicitud']);
+
+
+//obtener eventos por id
+Route::get('/solicitudes/evento/{id}', [SolicitudesController::class, 'getByEventoId']);
+
+

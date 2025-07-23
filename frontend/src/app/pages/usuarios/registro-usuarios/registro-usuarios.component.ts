@@ -5,27 +5,29 @@ import { AuthService } from '../../../services/auth.service';
   selector: 'app-registro-usuarios',
   standalone: false,
   templateUrl: './registro-usuarios.component.html',
-  styleUrl: './registro-usuarios.component.css'
+  styleUrl: './registro-usuarios.component.css',
 })
 export class RegistroUsuariosComponent {
   email: string = '';
   password: string = '';
   passwordConfirmation: string = '';
+  name: string = '';
 
   constructor(private authService: AuthService) {}
 
   onSubmit(): void {
- const formData = new FormData();
-    formData.append('email', this.email);
-    formData.append('password', this.password);
-    formData.append('passwordConfirmation', this.passwordConfirmation);
+    const data = {
+      email: this.email,
+      name: this.name,
+      password: this.password,
+      passwordConfirmation: this.passwordConfirmation,
+    };
 
-    //ahroa enviamos el formData al servicio de autenticacion
-    this.authService.register(formData).subscribe(
+    this.authService.register(data).subscribe(
       (response) => {
         console.log('Registro exitoso:', response);
-        alert(`Usuario registrado con éxito: ${response.data.user.email}`);
-        window.location.href = '/iniciar-sesion'; // redireccionamos a la pagina de inicio de sesion
+        alert(`Usuario registrado con éxito: ${data.email}`);
+        window.location.href = '/iniciar-sesion'; // redirecciona al login
       },
       (error) => {
         console.error('Error al registrar el usuario:', error);
@@ -33,6 +35,4 @@ export class RegistroUsuariosComponent {
       }
     );
   }
-
-
 }

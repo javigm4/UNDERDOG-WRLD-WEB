@@ -1,72 +1,105 @@
 <div class="scroll-eventos">
+  <!-- Buscador general -->
   <input
     type="text"
     placeholder="Buscar evento..."
     [(ngModel)]="filtroEvento"
     class="buscador-eventos"
   />
+
   <table class="tabla-solicitudes">
     <tbody>
       @for (evento of eventosFiltrados; track evento.id) {
-      <!-- Cabecera del evento con toggle -->
-      <tr class="evento-header" (click)="toggleEvento(evento.id)">
-        <td colspan="5">
-          <strong>{{ evento.nombre }}</strong>
-          <span class="flecha" [class.abierto]="estaAbierto(evento.id)">⮟</span>
-        </td>
-      </tr>
-
-      <!-- Solicitudes del evento (se muestran solo si está abierto) -->
-      <ng-container *ngIf="estaAbierto(evento.id)">
-        @for (solicitud of evento.solicitudes; track solicitud.id) {
-        <tr class="contenedor-solicitudes">
-          <td>{{ solicitud.nombre_usuario }}</td>
-          <td>{{ solicitud.email_usuario }}</td>
-          <td>
-            <span
-              [class.pendiente]="solicitud.estado === 'pendiente'"
-              [class.aceptado]="solicitud.estado === 'aceptado'"
-              [class.rechazado]="solicitud.estado === 'rechazado'"
-            >
-              {{ solicitud.estado }}
-            </span>
-          </td>
-          <td>{{ solicitud.fecha_solicitud }}</td>
-          <td>
-            <ng-container *ngIf="solicitud.estado === 'pendiente'">
-              <form
-                (ngSubmit)="aceptarSolicitud(solicitudForm.value)"
-                #solicitudForm="ngForm"
-              >
-                <input type="hidden" name="id" [ngModel]="solicitud.id" />
-                <input
-                  type="hidden"
-                  name="email"
-                  [ngModel]="solicitud.email_usuario"
-                />
-                <input
-                  type="hidden"
-                  name="nombre"
-                  [ngModel]="solicitud.nombre_usuario"
-                />
-                <input
-                  type="hidden"
-                  name="id_usuario"
-                  [ngModel]="solicitud.id_usuario"
-                />
-                <button type="submit" class="aceptar">Aceptar</button>
-              </form>
-              <button
-                class="rechazar"
-                (click)="rechazarSolicitud(solicitud.id)"
-              >
-                Rechazar
-              </button>
-            </ng-container>
+        <!-- Cabecera del evento con toggle -->
+        <tr class="evento-header" (click)="toggleEvento(evento.id)">
+          <td colspan="6">
+            <strong>{{ evento.nombre }}</strong>
+            <span class="flecha" [class.abierto]="estaAbierto(evento.id)">⮟</span>
           </td>
         </tr>
-        }
-      </ng-container>
+
+        <!-- Si el evento está abierto -->
+        <ng-container *ngIf="estaAbierto(evento.id)">
+          <!-- Buscador por evento -->
+          <tr>
+            <td colspan="6">
+              <input
+                type="text"
+                class="buscador-eventos"
+                [(ngModel)]="filtrosPorEvento[evento.id]"
+                placeholder="Filtrar solicitudes..."
+              />
+            </td>
+          </tr>
+
+          <!-- Lista de solicitudes -->
+          @for (solicitud of solicitudesFiltradas(evento); track solicitud.id) {
+            <div class="popup-info" *ngIf="mostrarInfoId === solicitud.id">
+                  <div class="popup-contenido-info">
+                    <button class="cerrar" (click)="mostrarInfoId = null">×</button>
+                    <h3>Información del usuario</h3>
+                    <p><strong>Nombre:</strong> {{ solicitud.nombre_usuario }}</p>
+                    <p><strong>Email:</strong> {{ solicitud.email_usuario }}</p>
+                    <p><strong>Procedencia:</strong> {{ solicitud.procedencia }}</p>
+                    <p><strong>Perfil de TikTok:</strong> {{ solicitud.enlace_tiktok }}</p>
+                  </div>
+                </div>
+            <tr class="contenedor-solicitudes">
+              <td>{{ solicitud.nombre_usuario }}</td>
+              <td>{{ solicitud.email_usuario }}</td>
+              <td>{{ solicitud.enlace_tiktok }}</td>
+
+              <td>
+                <span
+                  [class.pendiente]="solicitud.estado === 'pendiente'"
+                  [class.aceptado]="solicitud.estado === 'aceptado'"
+                  [class.rechazado]="solicitud.estado === 'rechazado'"
+                >
+                  {{ solicitud.estado }}
+                </span>
+              </td>
+
+              <td>
+                <button
+                  class="boton-info"
+                  (click)="mostrarInfoId = solicitud.id"
+                  title="Ver información del usuario"
+                >
+                  ℹ️
+                </button>
+              </td>
+
+              <!-- Celda siempre presente, con o sin botones -->
+              <td id="celdaSolicitud">
+                <div class="acciones-solicitud">
+                  <ng-container>
+                    <form
+                      *ngIf="solicitud.estado === 'pendiente'"
+                      (ngSubmit)="aceptarSolicitud(solicitudForm.value)"
+                      #solicitudForm="ngForm"
+                    >
+                      <input type="hidden" name="id" [ngModel]="solicitud.id" />
+                      <input type="hidden" name="email" [ngModel]="solicitud.email_usuario" />
+                      <input type="hidden" name="nombre" [ngModel]="solicitud.nombre_usuario" />
+                      <input type="hidden" name="id_usuario" [ngModel]="solicitud.id_usuario" />
+                      <button type="submit" class="boton-aceptar" title="Aceptar">✅</button>
+                      <button
+                        class="boton-rechazar"
+                        (click)="rechazarSolicitud(solicitud.id)"
+                        title="Rechazar"
+                      >
+                        ❌
+                      </button>
+                    </form>
+                  </ng-container>
+                </div>
+
+                <!-- Popup informativo -->
+
+              </td>
+            </tr>
+          }
+        </ng-container>
       }
     </tbody>
   </table>

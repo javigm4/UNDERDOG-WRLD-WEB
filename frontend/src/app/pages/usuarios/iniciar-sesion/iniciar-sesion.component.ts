@@ -13,22 +13,26 @@ export class IniciarSesionComponent {
 
   constructor(private authService: AuthService) {}
 
-  onSubmit(): void {
-    const formData = new FormData();
-    formData.append('email', this.email);
-    formData.append('password', this.password);
-    //lo hemos añadido a la variable formData para que se pueda enviar al backend, ahora procedemos a llamar al servicio de autenticacion
+ onSubmit(): void {
+  const loginData = {
+    email: this.email,
+    password: this.password
+  };
 
-    this.authService.login(formData).subscribe(
-      (response)=> {
-        console.log('Login exitoso:', response);
+  this.authService.login(loginData).subscribe(
+    (response) => {
+      console.log('Login exitoso:', response);
 
-        localStorage.setItem('token', response.data.accessToken); //obtenemos los datos del token de acceso
-        localStorage.setItem('user', JSON.stringify(response.data.user)); //obtenemos los datos del usuario
+      localStorage.setItem('token', response.data.accessToken);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
 
-        alert(`Logeado como ${response.data.user.name}`); //mostramos un mensaje de confirmacion
-        window.location.href = '/'; //redireccionamos a la pagina principal
-      }
-    )
-  }
+      alert(`Logeado como ${response.data.user.name}`);
+      window.location.href = '/';
+    },
+    (error) => {
+      alert('Credenciales inválidas');
+    }
+  );
+}
+
 }

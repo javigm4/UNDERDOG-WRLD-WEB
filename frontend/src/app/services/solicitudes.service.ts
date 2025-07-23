@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -8,6 +9,8 @@ export class SolicitudesService {
   private urlObtenerSolicitudes = 'http://127.0.0.1:8000/api/solicitudes';
   private url = 'http://127.0.0.1:8000/api/';
   private urlAñadirParticipante = this.url + 'añadir-participante';
+  private urlCrearSolicitud = this.url + 'crear-solicitud';
+  private urlObtenerSolicitudesPorEvento = this.url + 'solicitudes/evento/';
   constructor(private http: HttpClient) {}
 
   getSolicitudes(): Observable<any> {
@@ -30,6 +33,33 @@ export class SolicitudesService {
       `${this.url}rechazar-solicitud/${id}`,
       {},
       { withCredentials: true }
+    );
+  }
+
+  crearSolicitud(solicitud: {
+    id_usuario: number;
+    id_evento: number;
+    estado: string;
+    fecha: string;
+    procedencia:string;
+
+  }): Observable<any> {
+    const token = localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+
+    return this.http.post(this.urlCrearSolicitud, solicitud, { headers });
+  }
+
+  getSolicitudesByEventoId(eventoId: number): Observable<any> {
+    return this.http.get<any>(
+      `${this.urlObtenerSolicitudesPorEvento}${eventoId}`,
+      {
+        withCredentials: true,
+      }
     );
   }
 }
