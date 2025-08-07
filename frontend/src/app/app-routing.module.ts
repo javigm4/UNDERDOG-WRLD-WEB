@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { IniciarSesionComponent } from './pages/usuarios/iniciar-sesion/iniciar-sesion.component';
 import { RegistroUsuariosComponent } from './pages/usuarios/registro-usuarios/registro-usuarios.component';
-import { ContactanosComponent } from './pages/contactanos/contactanos.component';
 import { EventosComponent } from './pages/eventos/eventos.component';
 import { AdministracionComponent } from './administradores/administracion/administracion.component';
 import { authGuard } from './guards/auth.guard';
@@ -12,7 +11,6 @@ const routes: Routes = [
   { path: '', redirectTo: 'inicio', pathMatch: 'full' }, // Redirigir la raíz a /inicio (opcional)
   { path: 'iniciarSesion', component: IniciarSesionComponent },
   { path: 'registroUsuarios', component: RegistroUsuariosComponent },
-  { path: 'contactanos', component: ContactanosComponent },
   { path: 'eventos', component: EventosComponent },
   { path: 'administracion', component: AdministracionComponent, canActivate: [authGuard] },
 ];

@@ -33,6 +33,6 @@ export class VideoComponent implements OnChanges {
 
   private insertLineBreaks(title: string): string {
     // Inserta un <br> antes de cualquier número de 3 cifras (como 001, 123...)
-    return title.replace(/(\s|^)(\d{3})(?=\s|$)/g, '<br>$2');
+    return title.replace(/(\s|^)(\d{3})(?=\s|$)/g, '$1$2<br>');
   }
 }

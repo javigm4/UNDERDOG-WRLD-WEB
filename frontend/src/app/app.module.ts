@@ -11,7 +11,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { IniciarSesionComponent } from './pages/usuarios/iniciar-sesion/iniciar-sesion.component';
 import { RegistroUsuariosComponent } from './pages/usuarios/registro-usuarios/registro-usuarios.component';
 import { FooterComponent } from './layout/footer/footer.component';
-import { ContactanosComponent } from './pages/contactanos/contactanos.component';
 import { EventosComponent } from './pages/eventos/eventos.component';
 import { ListaPlazasComponent } from './pages/eventos/lista-plazas/lista-plazas.component';
 import { PlazaComponent } from './pages/eventos/plaza/plaza.component';
@@ -32,7 +31,6 @@ import { RouterModule } from '@angular/router';
     VideoComponent,
     RegistroUsuariosComponent,
     FooterComponent,
-    ContactanosComponent,
     EventosComponent,
     ListaPlazasComponent,
     PlazaComponent,

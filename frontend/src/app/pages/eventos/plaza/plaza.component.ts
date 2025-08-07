@@ -35,14 +35,15 @@ export class PlazaComponent {
       this.idUsuario = user.id;
     }
 
-     this.solicitudesService.getSolicitudesByEventoId(this.evento.id).subscribe(
+    this.solicitudesService.getSolicitudesByEventoId(this.evento.id).subscribe(
       (solicitudes) => {
         this.evento.solicitudes = solicitudes;
       },
       (error) => {
         console.error('Error cargando solicitudes:', error);
-      },
-  )}
+      }
+    );
+  }
 
   get idSanitizado(): string {
     return this.evento.nombre.replace(/\s+/g, '-').toLowerCase();
@@ -102,35 +103,34 @@ export class PlazaComponent {
       id_usuario: user.id,
       id_evento: this.evento.id,
       estado: 'pendiente',
-      fecha: formatDate(new Date(), 'yyyy-MM-dd', 'en-US'),
+      fecha_solicitud: formatDate(new Date(), 'yyyy-MM-dd', 'en-US'), // ✅ CAMBIO AQUÍ
       procedencia: this.procedenciaUsuario,
       enlace_tiktok: this.enlaceTiktok,
     };
+console.log('🟡 DATOS A ENVIAR:', solicitud);
 
     this.solicitudesService.crearSolicitud(solicitud).subscribe(
       (response: any) => {
+        console.log('✅ RESPUESTA DEL SERVIDOR:', response);
         console.log('Solicitud enviada con éxito:', response);
         alert('¡Solicitud enviada correctamente!');
+        window.location.reload();
+
       },
       (error: any) => {
         console.error('Error al enviar la solicitud:', error);
         alert('Hubo un problema al inscribirte.');
+        window.location.reload();
       }
     );
 
-    window.location.reload();
     this.formularioVisible = false; // Ocultar formulario después de enviar
+
   }
 
   get solicitudes(): any[] {
     return this.evento.solicitudes || [];
   }
-
-
-
-
-
-
 
   // Comprueba si el usuario ya está inscrito en el evento
   get yaInscrito(): boolean {

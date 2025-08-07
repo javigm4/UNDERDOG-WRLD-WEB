@@ -56,55 +56,55 @@
       <div *ngIf="modalVisible" class="modal" (click)="cerrarModal($event)">
         <div class="modal-content" (click)="$event.stopPropagation()">
           <span class="close-btn" (click)="cerrarModal($event)">&times;</span>
-          <p>
+          <p class="sobreNosotrosTexto">
             Somos <strong>UNDERDOG WRLD</strong>. No nacimos para encajar,
             nacimos para construir lo que no existía.
           </p>
-          <p>
+          <p class="sobreNosotrosTexto">
             UNDERDOG WRLD es un ecosistema cultural independiente donde el
             talento real toma el protagonismo. No buscamos lo viral: buscamos lo
             que tiene fondo, criterio y cultura.
           </p>
-          <p>
+          <p class="sobreNosotrosTexto">
             Creamos un puente entre el underground y lo mainstream desde la
             raíz: podcast, batallas, música, baile, graffiti y comunidad. Todo
             lo que pasa en la calle… pero sin filtros.
           </p>
-          <p>
+          <p class="sobreNosotrosTexto">
             Estamos construyendo algo más que un proyecto: una plataforma para
             las voces que nunca se escuchan y el arte que no pide permiso.
           </p>
 
           Si conectas con esto, ya eres parte.
-          <p><strong>Bienvenido a UNDERDOG WRLD.</strong></p>
+          <p class="sobreNosotrosTexto">
+            <strong>Bienvenido a UNDERDOG WRLD.</strong>
+          </p>
           <p>Donde empieza lo que nadie se atrevió a hacer.</p>
         </div>
       </div>
     </div>
   </section>
 
-<section
-  id="discordlink"
-  class="discord-join-section section-animate fade-in"
->
-  <div class="discord-content">
-    <div class="discord-bloque-img fade-left">
-      <img id="discordImagen" src="/discgraqffiti.png" alt="Discord Logo" />
+  <section
+    id="discordlink"
+    class="discord-join-section section-animate fade-in"
+  >
+    <div class="discord-content">
+      <div class="discord-bloque-img fade-left">
+        <a href="https://discord.gg/YrW4HyrUjb">
+          <img id="discordImagen" src="/discgraqffiti.png" alt="Discord Logo" />
+        </a>
+      </div>
+
+      <div class="discord-bloque-texto fade-up">
+        <p class="discord-texto">
+          Únete a nuestro discord para estar informado de nuestros eventos,
+          podcast y mucho más.
+        </p>
+        <img src="/felchapallao.png" alt="Flecha" id="flecha" />
+      </div>
     </div>
-
-    <div class="discord-bloque-texto fade-up">
-      <p>
-        Únete a nuestro discord para estar informado de nuestros eventos,
-        podcast y mucho más.
-      </p>
-      <a href="https://discord.gg/YrW4HyrUjb">
-        <button class="discord-join-btn">🚀 SÉ UN UNDERDOG</button>
-      </a>
-    </div>
-  </div>
-</section>
-
-
+  </section>
 
   <!-- SECCIÓN 2: PODCAST -->
   <section id="podcastlink" class="inicio podcast section-animate fade-in">
@@ -116,6 +116,10 @@
   </section>
 
   <!-- SECCION TWITTER BOTON -->
+  <div class="mantenimiento">
+    <span> PRÓXIMAMENTE </span>
+  </div>
+
   <section id="twitterlink" class="twitter-section section-animate fade-in">
     <div>
       <h1>UNDERDOG WRLD WEB</h1>
@@ -161,6 +165,9 @@
     </div>
   </section>
 
+  <div class="mantenimiento">
+    <span> PRÓXIMAMENTE </span>
+  </div>
   <!-- SECCIÓN FAQ -->
   <section class="faq-section section-animate fade-in">
     <div class="faq-container">

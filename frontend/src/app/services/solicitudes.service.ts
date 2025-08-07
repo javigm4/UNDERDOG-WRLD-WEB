@@ -40,9 +40,9 @@ export class SolicitudesService {
     id_usuario: number;
     id_evento: number;
     estado: string;
-    fecha: string;
-    procedencia:string;
-
+    fecha_solicitud: string;
+    procedencia: string;
+    enlace_tiktok: string;
   }): Observable<any> {
     const token = localStorage.getItem('token');
 

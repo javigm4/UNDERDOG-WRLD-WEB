@@ -7,6 +7,20 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'rocksalt';
+  src: url('/RockSalt-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+.discord-texto {
+  font-family: 'rocksalt', sans-serif;
+  font-size: 40px;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -153,8 +167,9 @@ h1 {
 }
 
 /* BUTTONS */
-.inicio-btn,
-.discord-join-btn {
+
+
+.inicio-btn {
   background-color: #C24C34;
   color: #fff;
   font-size: 1.3rem;
@@ -167,6 +182,27 @@ h1 {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   margin-top: 20px;
 }
+
+#flecha {
+  width: 300px;
+  height: 300px;
+  margin-left: 10px;
+  vertical-align: middle;
+  transform: scaleX(-1);
+}
+.discord-join-btn {
+  background-color: #4752C4;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 1rem 3rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+
 .inicio-btn:hover,
 .discord-join-btn:hover {
   background-color: #4752C4;
@@ -174,6 +210,12 @@ h1 {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
 }
 
+.discord-join-btn:hover {
+  background-color: #085827;
+
+
+
+}
 /* PODCAST COMPONENT */
 .podcast-card {
   backdrop-filter: blur(10px);
@@ -259,7 +301,7 @@ h1 {
   background: transparent;
   color: #EDEDED;
   position: relative;
-  padding: 8rem 3rem;
+  padding: 0rem 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -352,8 +394,17 @@ h1 {
   background-image: url(/papel.png);
   background-repeat: no-repeat;
   background-position: 250px;
-}
 
+}
+/* Overlay oscuro */
+.faq-form::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1); /* Ajusta la opacidad aquí */
+  z-index: 1;
+  pointer-events: none;
+}
 
 .faq-container h1 {
   font-size: 3rem;
@@ -506,4 +557,28 @@ h1 {
   width: 100%;
   height: auto;
   display: block;
+}
+
+
+.mantenimiento {
+  width: 100%;
+  height: 50px;
+  background: repeating-linear-gradient(
+    45deg,
+    black,
+    black 20px,
+    yellow 20px,
+    yellow 40px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px black;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 3px solid black;
+  box-shadow: inset 0 0 10px #000;
 }

@@ -6,7 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EventosController;
 use App\Http\Controllers\ParticipantesController;
 use App\Http\Controllers\SolicitudesController;
-use App\Models\Participante;
+use App\Http\Controllers\YouTubeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,4 +56,5 @@ Route::post('/rechazar-solicitud/{id}', [SolicitudesController::class, 'rechazar
 //obtener eventos por id
 Route::get('/solicitudes/evento/{id}', [SolicitudesController::class, 'getByEventoId']);
 
-
+// videos yt
+Route::get('/youtube/search', [YouTubeController::class, 'searchVideos']);

@@ -31,7 +31,7 @@ class ParticipantesController extends Controller
         $participante = new Participante();
         $participante->id_usuario = $request->id_usuario;
         $participante->id_evento = $request->id_evento;
-        $participante->email =$request->email;
+        $participante->email = $request->email;
         $participante->save();
         return response()->json(['mensaje' => 'Participante añadido correctamente']);
     }

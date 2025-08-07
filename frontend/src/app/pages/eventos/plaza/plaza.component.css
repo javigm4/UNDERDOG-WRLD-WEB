@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'fuente';
+  src: url('/Covered_By_Your_Graceq.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 .app-lista-plazas {
   display: flex;
   flex-direction: column;
@@ -35,7 +43,7 @@
 
 h2 {
   margin: -12px;
-}
+  font-family: 'fuente', sans-serif;}
 
 #plazasdisponibles {
   color: red;

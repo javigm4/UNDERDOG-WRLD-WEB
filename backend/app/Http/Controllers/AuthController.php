@@ -39,8 +39,18 @@ class AuthController extends Controller
             //se valida si esta bien el email, password y nombre
             $request->validate([
                 'email' => 'required|email|unique:users,email',
-                'password' => 'required|min:6',
-                'name' => 'required|string|max:255',
+                'password' => 'required|min:6|confirmed',
+                'name' => 'required|string|max:255|unique:users,name',
+            ], [
+                'email.required' => 'El correo es obligatorio.',
+                'email.email' => 'El correo no tiene un formato válido.',
+                'email.unique' => 'Este correo ya está registrado.',
+                'name.required' => 'El nombre de usuario es obligatorio.',
+                'name.unique' => 'Ese nombre de usuario ya está en uso.',
+                'password.required' => 'La contraseña es obligatoria.',
+                'password.min' => 'La contraseña debe tener al menos 6 caracteres.',
+                'password.confirmed' => 'Las contraseñas introducias no coinciden.',
+
             ]);
 
             $usuario = new User();
@@ -48,8 +58,8 @@ class AuthController extends Controller
             $usuario->name = $request->name;
             $usuario->password = Hash::make($request->password);
             $usuario->save(); //se guarda el usuario en la base de datos
-            return response()->json(['message' => 'Usuario registrado con éxito'], 201);
 
+            return response()->json(['message' => 'Usuario registrado con éxito'], 201);
         } catch (\Illuminate\Validation\ValidationException $e) {
             return response()->json(['errors' => $e->errors()], 422);
         } catch (\Exception $e) {
@@ -72,13 +82,14 @@ class AuthController extends Controller
     }
 
 
-    public function index() {
+    public function index()
+    {
         $solicitudes = User::all();
         return $solicitudes;
     }
 
     //verificar contraseña para administracion
-      public function verificar(Request $request)
+    public function verificar(Request $request)
     {
         $claveIngresada = $request->input('clave');
 
@@ -90,4 +101,3 @@ class AuthController extends Controller
         ]);
     }
 }
-

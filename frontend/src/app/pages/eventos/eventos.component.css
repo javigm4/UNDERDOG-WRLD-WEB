@@ -1,3 +1,6 @@
+
+
+
 #general {
    background-image: url(/fondoeventos.png);
   background-repeat: no-repeat;
@@ -8,8 +11,8 @@
 
 .eventos-container {
   display: flex;
-  height: 71.9vh; /* Altura del contenedor */
-  width: 120%;
+  height: 72.7vh; /* Altura del contenedor */
+  width: 100%;
 }
 
 
@@ -20,10 +23,13 @@
   margin-top: -30px;
 }
 
+aside {
+  display:inline-block;
+}
 
-aside, .eventos-section {
+.eventos-section {
   display: inline-block;
-  width: 50%;
+  width: 65%;
 }
 
 
@@ -43,8 +49,8 @@ aside {
   max-height: 700px; /* Altura fija */
   padding-left: 100px;
   padding-right: 50px;
-  border-right: 4px solid #000000;
 }
+
 
 aside a {
   display: block;

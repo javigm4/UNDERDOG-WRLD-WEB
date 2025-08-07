@@ -6,6 +6,7 @@ use App\Models\Solicitud;
 use App\Models\Participante;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class SolicitudesController extends Controller
 {
@@ -17,19 +18,25 @@ class SolicitudesController extends Controller
 
     public function store(Request $request)
     {
+        Log::info('Solicitud recibida:', $request->all());
         $request->validate([
             'id_usuario' => 'required|exists:users,id',
             'id_evento' => 'required|exists:eventos,id',
             'estado' => 'in:pendiente,aceptado,rechazado',
-            'enlace_tiktok' => 'required',
+            'enlace_tiktok' => 'required|string',
+            'procedencia' => 'nullable|string',
+            'fecha_solicitud' => 'nullable|date',
         ]);
 
         $solicitud = Solicitud::create([
             'id_usuario' => $request->id_usuario,
             'id_evento' => $request->id_evento,
-            'estado' => 'pendiente',
+            'estado' => $request->estado ?? 'pendiente',
             'enlace_tiktok' => $request->enlace_tiktok,
+            'procedencia' => $request->procedencia,
+            'fecha_solicitud' => $request->fecha_solicitud ?? now(),
         ]);
+
 
         return response()->json([
             'mensaje' => 'Solicitud creada exitosamente',

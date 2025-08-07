@@ -16,8 +16,9 @@ class Solicitud extends Model
         'id_evento',
         'estado',
         'enlace_tiktok',
+        'procedencia',
+        'fecha_solicitud',
     ];
-
     public $timestamps = false;
 
     public function evento()
